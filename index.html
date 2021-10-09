@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="dist/style.css">
-  <script src="dist/main.js"></script>
   
   <title>Frontend Mentor | Tip calculator app</title>
 
@@ -21,64 +20,114 @@
   </style>
 </head>
 <body>
-  <header class="container">
-    <img src="images/logo.svg" alt="logo"/>
-  </header>
+  <div id="app">
+    <header class="container">
+      <img src="images/logo.svg" alt="logo"/>
+    </header>
 
-  <main class="calculator container container__main">
-    <div class="calculator__input">
-      <section class="calculator__bill">
+    <main class="calculator container container__main">
+      <div class="calculator__input">
+        <section class="calculator__bill">
+          <fieldset>
+            <label for="bill">Bill</label>
+            <div class="input">
+              <img src="images/icon-dollar.svg" alt="dollar icon" />
+              <input type="number" name="bill" id="bill" placeholder="0" v-model="bill" />
+            </div>
+          </fieldset>
+        </section>
+        <section class="calculator__percent">
+          <fieldset class="radio">
+            <legend>Select Tip %</legend>
+            <input class="radio__input" type="radio" name="percent" id="5percent" value="5" v-model="percent" />
+            <label class="radio__label" for="5percent">5%</label>
+            <input class="radio__input" type="radio" name="percent" id="10percent" value="10" v-model="percent" />
+            <label class="radio__label" for="10percent">10%</label>
+            <input class="radio__input" type="radio" name="percent" id="15percent" value="15" v-model="percent" />
+            <label class="radio__label" for="15percent">15%</label>
+            <input class="radio__input" type="radio" name="percent" id="25percent" value="25" v-model="percent" />
+            <label class="radio__label" for="25percent">25%</label>
+            <input class="radio__input" type="radio" name="percent" id="50percent" value="50" v-model="percent" />
+            <label class="radio__label" for="50percent">50%</label>
+            <input class="radio__input" type="radio" name="percent" id="custom" value="custom" v-model="percent" />
+            <input class="radio_custom" 
+            type="number" 
+            name="custompercent" 
+            id="custompercent" 
+            placeholder="Custom"  
+            v-model="custom" 
+            :onFocus="selectCustom" />
+          </fieldset>
+        </section>
+      <section class="calculator__people">
+        
         <fieldset>
-          <label for="bill">Bill</label>
+          <label for="">Number of People</label>
           <div class="input">
-            <img src="images/icon-dollar.svg" alt="dollar icon" />
-            <input type="text" name="bill" id="bill" value="0" />
+            <img src="images/icon-person.svg" alt="person icon" />
+            <input type="number" name="people" id="people"  placeholder="0"  v-model="people" />
           </div>
         </fieldset>
       </section>
-      <section class="calculator__percent">
-        <fieldset class="radio">
-          <legend>Select Tip %</legend>
-          <input class="radio__input" type="radio" name="percent" id="5percent" value="5"/>
-          <label class="radio__label" for="5percent">5%</label>
-          <input class="radio__input" type="radio" name="percent" id="10percent" value="10"/>
-          <label class="radio__label" for="10percent">10%</label>
-          <input class="radio__input" type="radio" name="percent" id="15percent" value="15"/>
-          <label class="radio__label" for="15percent">15%</label>
-          <input class="radio__input" type="radio" name="percent" id="25percent" value="25"/>
-          <label class="radio__label" for="25percent">25%</label>
-          <input class="radio__input" type="radio" name="percent" id="50percent" value="50"/>
-          <label class="radio__label" for="50percent">50%</label>
-          <input class="radio__input" type="radio" name="percent" id="custom" value="0"/>
-          <label class="radio__label" for="custom">Custom</label>
-          <input type="text" name="custompercent" id="custompercent" />
-        </fieldset>
-      </section>
-    <section class="calculator__people">
-      
-      <fieldset>
-        <label for="">Number of People</label>
-        <div class="input">
-          <img src="images/icon-person.svg" alt="person icon" />
-          <input type="text" name="people" id="people"  value="0" />
-        </div>
-      </fieldset>
-    </section>
 
-    </div>
-    <div class="calculator__results">
-      <section>Tip Amount<br/>
-      / person</section>
-      <section>
-        Total<br/>
-        / person
-      </section>
-      <button>Reset</button>
-    </div>
-  </main>
+      </div>
+      <div class="calculator__results results">
+        <section>
+          <div class="results__subtitle">Tip Amount
+            <div class="results__subtitle--per-person">/ person</div>
+          </div>
+          <div class="results__total">${{tipPerPerson}}</div>
+        </section>
+        <section>
+          <div class="results__subtitle">Total
+            <div class="results__subtitle--per-person">/ person</div>
+        </div>
+          <div class="results__total">${{totalPerPerson}}</div>
+        </section>
+        <button class="results__button">Reset</button>
+      </div>
+    </main>
+  </div>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">nuForge Development</a>.
   </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    let app = Vue.createApp({
+      data() {
+        return {
+          bill: 10,
+          percent: 5,
+          custom: null,
+          people: 1,
+        }
+      },
+      methods: {
+          selectCustom() {
+            this.percent = 0;
+          }
+        },
+      computed: {
+        totalPerPerson() {
+          let percent = (this.percent === "custom" ) ? this.custom : this.percent;
+          console.log(percent);
+          let billPercent = (this.bill * (this.percent /100)) + this.bill * 1;
+          let perPerson =  billPercent / this.people;
+          return perPerson.toFixed(2);
+        },
+        tipPerPerson() {
+          let percent = (this.percent === "custom" ) ? this.custom : this.percent;
+          let billPercent = this.bill * (this.percent / 100);
+          let perPerson =  billPercent / this.people;
+          return perPerson.toFixed(2);
+        }
+      }
+    });
+    app.mount('#app');
+    </script>
+  <script src="dist/main.js"></script>
+
 </body>
 </html>

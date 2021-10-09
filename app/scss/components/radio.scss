@@ -28,4 +28,13 @@
         color: var(--very-dark-cyan);
     }
 
+    .radio_custom {
+        cursor: pointer;
+        padding: rem(10);
+        background: var(--light-grayish-cyan2);
+        text-align: center;
+        border-radius: rem(5);
+        border: none;
+    }
+
 }

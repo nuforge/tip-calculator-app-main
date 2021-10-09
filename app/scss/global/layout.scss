@@ -6,12 +6,13 @@ header {
 
 .container {
     width: rem(375);
-    margin: rem(80) auto;
+    margin: rem(40) auto;
     padding: rem(28);
     border-radius: rem(16);
 
     @include breakpoint(large) {
-        width: rem(915)
+        width: rem(915);
+        margin: rem(80) auto;
     }
 
     &__main {

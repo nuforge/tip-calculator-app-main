@@ -1,0 +1,34 @@
+@use "../utils/" as *;
+
+.results {
+    position: relative;
+    font-weight: 700;
+
+    & section {
+        display: flex;
+        margin-bottom: rem(36);
+    }
+
+    &__subtitle {
+        flex: 1;
+        color: var(--white);
+        &--per-person {
+            color: var(--dark-grayish-cyan2);
+            font-weight: 500;
+        }
+    }
+    
+    &__total {
+        font-size: rem(24);
+        color: var(--strong-cyan);
+    }
+
+    &__button {
+        margin-top: rem(20);
+        cursor: pointer;
+
+        @include breakpoint(large) {
+            margin-top: rem(40);
+        }
+    }
+}
