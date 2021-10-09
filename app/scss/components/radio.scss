@@ -28,6 +28,11 @@
         color: var(--very-dark-cyan);
     }
 
+    &__label:hover {
+        background: var(--light-grayish-cyan) ;
+        color: var(--very-dark-cyan);
+    } 
+
     .radio_custom {
         cursor: pointer;
         padding: rem(10);

@@ -84,7 +84,7 @@
         </div>
           <div class="results__total">${{totalPerPerson}}</div>
         </section>
-        <button class="results__button">Reset</button>
+        <button class="results__button" :onClick="resetCalculator">Reset</button>
       </div>
     </main>
   </div>
@@ -98,7 +98,7 @@
     let app = Vue.createApp({
       data() {
         return {
-          bill: 10,
+          bill: 0,
           percent: 5,
           custom: null,
           people: 1,
@@ -107,21 +107,29 @@
       methods: {
           selectCustom() {
             this.percent = "custom";
+          },
+          resetCalculator() {
+          this.bill = 0;
+          this.percent =  5;
+          this.custom = null;
+          this.people= 0;
           }
         },
       computed: {
+        tipPerPerson() {
+          if (this.bill === 0 || this.people === 0) return 0;
+          let percent = (this.percent === "custom" ) ? this.custom : this.percent;
+          let billPercent = this.bill * (percent / 100);
+          let perPerson =  billPercent / this.people;
+          return perPerson.toFixed(2);
+        },
         totalPerPerson() {
+          if (this.bill === 0 || this.people === 0) return 0;
           let percent = (this.percent === "custom" ) ? this.custom : this.percent;
           let billPercent = (this.bill * (percent /100)) + this.bill * 1;
           let perPerson =  billPercent / this.people;
           return perPerson.toFixed(2);
         },
-        tipPerPerson() {
-          let percent = (this.percent === "custom" ) ? this.custom : this.percent;
-          let billPercent = this.bill * (percent / 100);
-          let perPerson =  billPercent / this.people;
-          return perPerson.toFixed(2);
-        }
       }
     });
     app.mount('#app');
