@@ -106,20 +106,19 @@
       },
       methods: {
           selectCustom() {
-            this.percent = 0;
+            this.percent = "custom";
           }
         },
       computed: {
         totalPerPerson() {
           let percent = (this.percent === "custom" ) ? this.custom : this.percent;
-          console.log(percent);
-          let billPercent = (this.bill * (this.percent /100)) + this.bill * 1;
+          let billPercent = (this.bill * (percent /100)) + this.bill * 1;
           let perPerson =  billPercent / this.people;
           return perPerson.toFixed(2);
         },
         tipPerPerson() {
           let percent = (this.percent === "custom" ) ? this.custom : this.percent;
-          let billPercent = this.bill * (this.percent / 100);
+          let billPercent = this.bill * (percent / 100);
           let perPerson =  billPercent / this.people;
           return perPerson.toFixed(2);
         }
