@@ -1,0 +1,7 @@
+@use "../utils/" as *;
+
+input {
+    font-family: 'Space Mono', monospace;
+    font-size: rem(18);
+    color: var(--dark-grayish-cyan);
+}

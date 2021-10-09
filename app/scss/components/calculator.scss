@@ -1,0 +1,56 @@
+
+@use "../utils/" as *;
+.calculator {
+    
+    display: flex;
+    flex-direction: column;
+    gap: rem(32);
+    
+
+    @include breakpoint(large){
+        flex-direction: row;
+    }
+
+    & fieldset {
+        border: none;
+    }
+
+    &__input {
+        flex: 1;
+        display:flex;
+        flex-direction: column;
+    }
+    
+    &__percent{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    
+    &__percent label{
+        flex: 1;
+        display: block;
+    }
+
+    &__results {
+        flex: 1;
+        background: var(--very-dark-cyan);
+        border-radius: rem(16);
+        padding: rem(32);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    &__results button {
+        display: block;
+        bottom: rem(32);
+        padding: rem(10);
+        text-transform: uppercase;
+        font-weight: 500;
+        background: var(--strong-cyan);
+        border: none;
+        border-radius: rem(10);
+    }
+
+}

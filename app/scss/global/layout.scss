@@ -1,0 +1,21 @@
+@use "../utils/" as *;
+
+header {
+    text-align: center;
+}
+
+.container {
+    width: rem(375);
+    margin: rem(80) auto;
+    padding: rem(28);
+    border-radius: rem(16);
+
+    @include breakpoint(large) {
+        width: rem(915)
+    }
+
+    &__main {
+        background: var(--white);
+    }
+}
+

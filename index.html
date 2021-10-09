@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="dist/style.css">
+  <script src="dist/main.js"></script>
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <img src="images/logo.svg" alt="logo"/>
+  </header>
+
+  <main class="calculator container container__main">
+    <div class="calculator__input">
+      <section class="calculator__bill">
+        <fieldset>
+          <label for="bill">Bill</label>
+          <div class="input">
+            <img src="images/icon-dollar.svg" alt="dollar icon" />
+            <input type="text" name="bill" id="bill" value="0" />
+          </div>
+        </fieldset>
+      </section>
+      <section class="calculator__percent">
+        <fieldset class="radio">
+          <legend>Select Tip %</legend>
+          <input class="radio__input" type="radio" name="percent" id="5percent" value="5"/>
+          <label class="radio__label" for="5percent">5%</label>
+          <input class="radio__input" type="radio" name="percent" id="10percent" value="10"/>
+          <label class="radio__label" for="10percent">10%</label>
+          <input class="radio__input" type="radio" name="percent" id="15percent" value="15"/>
+          <label class="radio__label" for="15percent">15%</label>
+          <input class="radio__input" type="radio" name="percent" id="25percent" value="25"/>
+          <label class="radio__label" for="25percent">25%</label>
+          <input class="radio__input" type="radio" name="percent" id="50percent" value="50"/>
+          <label class="radio__label" for="50percent">50%</label>
+          <input class="radio__input" type="radio" name="percent" id="custom" value="0"/>
+          <label class="radio__label" for="custom">Custom</label>
+          <input type="text" name="custompercent" id="custompercent" />
+        </fieldset>
+      </section>
+    <section class="calculator__people">
+      
+      <fieldset>
+        <label for="">Number of People</label>
+        <div class="input">
+          <img src="images/icon-person.svg" alt="person icon" />
+          <input type="text" name="people" id="people"  value="0" />
+        </div>
+      </fieldset>
+    </section>
+
+    </div>
+    <div class="calculator__results">
+      <section>Tip Amount<br/>
+      / person</section>
+      <section>
+        Total<br/>
+        / person
+      </section>
+      <button>Reset</button>
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
