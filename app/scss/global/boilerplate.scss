@@ -14,3 +14,7 @@ body {
     color: var(--label-color);
     font-family: 'Space Mono', monospace;
 }
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}

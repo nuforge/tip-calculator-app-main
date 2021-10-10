@@ -18,6 +18,7 @@
         padding: rem(10);
         background: var(--very-dark-cyan);
         color: var(--white);
+        font-weight: 700;
         text-align: center;
         border-radius: rem(5);
 
@@ -39,7 +40,14 @@
         background: var(--light-grayish-cyan2);
         text-align: center;
         border-radius: rem(5);
-        border: none;
+        border: 2px solid var(--white);
+        font-weight: 700;
+
+
+        &:focus-within
+        {
+            border: 2px solid var(--strong-cyan);
+        }
     }
 
 }

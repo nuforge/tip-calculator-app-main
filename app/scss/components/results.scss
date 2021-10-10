@@ -25,10 +25,15 @@
 
     &__button {
         margin-top: rem(20);
+        font-weight: 700;
         cursor: pointer;
 
         @include breakpoint(large) {
             margin-top: rem(40);
+        }
+
+        &:hover {
+            background: var(--light-grayish-cyan);
         }
     }
 }
